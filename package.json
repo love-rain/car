@@ -5,7 +5,7 @@
   "scripts": {
     "build": "next build",
     "dev": "node server.js",
-    "start": "NODE_ENV=production node server.js",
+    "start": "node server.js",
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
@@ -34,6 +34,7 @@
     "react-facebook-login": "^4.1.1",
     "react-redux": "^6.0.1",
     "react-responsive-carousel": "^3.1.49",
+    "react-router-dom": "^5.1.2",
     "react-scroll": "^1.7.14",
     "react-with-firebase-auth": "^1.0.2",
     "recompose": "^0.30.0",

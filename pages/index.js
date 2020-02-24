@@ -1,30 +1,22 @@
-import React, {Component} from 'react'
-import {connect} from "react-redux";
+import React, {Component}     from 'react'
+import {connect}              from "react-redux";
 import {i18n, withNamespaces} from '../i18n'
+import MainLayOut             from "../app/containers/layout";
 
-@connect(state => ({
+@connect(state => ({}), (dispatch) => ({}))
 
-}), (dispatch) => ({
-
-}))
 class Home extends Component {
-    
-
-    static async getInitialProps() {
-        return {
-            namespacesRequired: ['common'],
-        }
+  static async getInitialProps() {
+    return {
+      namespacesRequired: ['common'],
     }
+  }
 
-
-    render() {
-
-        return (
-           <div>
-               Hello words
-           </div>
-        )
-    }
+  render() {
+    return (
+      <MainLayOut/>
+    )
+  }
 }
 
-export default withNamespaces('common')(Home)
+export default withNamespaces('common')(Home);
