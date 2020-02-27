@@ -1,7 +1,10 @@
-import React, {Component}     from 'react'
-import {connect}              from "react-redux";
-import {i18n, withNamespaces} from '../i18n'
-import MainLayOut             from "../app/containers/layout";
+import React, {Component} from 'react'
+import {connect} from "react-redux";
+import {
+  i18n,
+  withNamespaces
+} from '../i18n'
+import MainLayOut from "../app/containers/layout";
 
 @connect(state => ({}), (dispatch) => ({}))
 

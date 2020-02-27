@@ -1,19 +1,38 @@
-import React                  from "react";
-import {Dropdown, Menu} from "antd";
+import React from "react";
+import {
+  Dropdown,
+  Menu
+} from "antd";
+
 import "./styles.less"
-const menu     = (
+import Link from 'next/link'
+
+const menu           = (
   <Menu>
     <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
-        1st menu item
-      </a>
+      <Link href="/dichvu/baohanh">Chính sách bảo hành</Link>
+    </Menu.Item>
+    <Menu.Item>
+      <Link href="/dichvu/baoduong">Bảo dưỡng định kỳ</Link>
+    </Menu.Item>
+    <Menu.Item>
+      <Link href="/dichvu/phutung"> Phụ tùng chính hiệu</Link>
+    </Menu.Item>
+    <Menu.Item>
+      <Link href="/dichvu/suachua"> Sửa chữa</Link>
+    </Menu.Item>
+    <Menu.Item>
+      <Link href="/dichvu/datlichbaoduong"> Đặt lịch bảo dưỡng</Link>
+    </Menu.Item>
+    <Menu.Item>
+      <Link href="/dichvu/cuuhogiaothong"> Cứu hộ giao thông</Link>
     </Menu.Item>
   </Menu>
 );
 const DropdownCustom = (props) => {
   return <Dropdown overlay={menu}>
     <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-      {props.name} 
+      {props.name}
     </a>
   </Dropdown>
 };

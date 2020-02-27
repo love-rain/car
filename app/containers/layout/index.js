@@ -6,17 +6,17 @@ import {
 import HomePage from "../trangchu";
 import Product from "../sanpham";
 import Information from "../thongtin";
-import Service from "../dichvu";
 import DropdownCustom from "../../components/Dropdown";
+import Link from "next/link";
 
 const {Header, Content, Footer} = Layout;
 
-const MainLayOut = () => {
+const MainLayOut = (props) => {
   const [listMenu]                  = useState([
-    {key: 'home', label: 'Trang chủ'},
-    {key: 'product', label: 'Sản phẩm',},
-    {key: 'info', label: 'Thông tin'},
-    {key: 'service', label: 'Dịch vụ', component: <DropdownCustom name={'Dịch vụ'} />}
+    {key: 'trangchu', label: 'Trang chủ'},
+    {key: 'sanpham', label: 'Sản phẩm',},
+    {key: 'thongtin', label: 'Thông tin'},
+    {key: 'dichvu', label: 'Dịch vụ', component: <DropdownCustom name={'Dịch vụ'}/>}
   ]);
   const [currentTab, setCurrentTab] = useState('home');
   return <Layout>
@@ -30,16 +30,17 @@ const MainLayOut = () => {
         {listMenu.map(item => {
           return <Menu.Item
             onClick={() => setCurrentTab(item.key)}
-            key={item.key}>{item.component ? item.component : item.label}</Menu.Item>
+            key={item.key}>
+            <Link href={`/${item.key}`}>
+              {item.component ? item.component : item.label}
+            </Link>
+          </Menu.Item>
         })}
       </Menu>
     </Header>
     <Content style={{marginTop: 64, padding: '20px 50px'}}>
       <div style={{background: '#fff', padding: 24, minHeight: 655}}>
-        {currentTab === 'home' && <HomePage/>}
-        {currentTab === 'product' && <Product/>}
-        {currentTab === 'info' && <Information/>}
-        {currentTab === 'contact' && <Service/>}
+        {props.children}
       </div>
     </Content>
     <Footer style={{textAlign: 'center'}}>Car @2020</Footer>
