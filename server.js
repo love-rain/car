@@ -26,8 +26,14 @@ app.prepare()
         server.use('/static', express.static(path.join(__dirname, '/static')));
 
         server.get('/', (req, res) => {
-            return app.render(req, res, '/index');
+          return app.render(req, res, '/index');
         });
+        
+
+        // server.get('/sanpham/:id', (req, res) => {
+        //     const queryParams = {id: req.params.id};
+        //   return app.render(req, res, '/sanpham-detail', queryParams);
+        // });
 
         server.get('*', (req, res) => {
             return handle(req, res)

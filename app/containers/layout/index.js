@@ -18,7 +18,8 @@ const MainLayOut = (props) => {
     {key: 'thongtin', label: 'Thông tin'},
     {key: 'dichvu', label: 'Dịch vụ', component: <DropdownCustom name={'Dịch vụ'}/>}
   ]);
-  const [currentTab, setCurrentTab] = useState('home');
+  const [currentTab, setCurrentTab] = useState('trangchu');
+  console.log({currentTab})
   return <Layout>
     <Header style={{position: 'fixed', zIndex: 1, width: '100%', background: '#fff'}}>
       <Menu
