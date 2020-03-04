@@ -1,54 +1,56 @@
 import React, {
   useCallback,
+  useEffect,
   useState
 } from 'react';
 import {
   Breadcrumb,
   Card,
-  Icon,
   Select
 } from "antd";
+
+import {useRouter} from 'next/router'
+import Link from "next/link";
+
+import {firebaseFirestore} from "../../firebaseConfig";
+import Spinner from "../../app/components/Spin";
+import "./sanpham.less"
 
 const {Meta}   = Card;
 const {Option} = Select;
 
-import "./sanpham.less"
-
 const Product = () => {
-  const [mockData]   = useState([
-    {
-      id: 1,
-      name: 'toyota',
-      price: '750000',
-      description: 'Toyota camry, inova'
-    }, {
-      id: 2,
-      name: 'lexus',
-      price: '1750000',
-      description: 'LX570'
-    }, {
-      id: 3,
-      name: 'Porsche',
-      price: '11750000',
-      description: 'Porsche 911'
-    },
-    {
-      id: 4,
-      name: 'Porsche',
-      price: '11750000',
-      description: 'Porsche 911'
+  const [products, setProduct] = useState([]);
+  const [loading, setLoading]  = useState(true);
+  useEffect(() => {
+    async function fetchData() {
+      const snap   = [];
+      const result = await firebaseFirestore.collection("sanpham").get();
+      result.forEach(doc => {
+        snap.push(doc.data())
+      });
+      setProduct(snap);
+      setLoading(false)
     }
-  ]);
+
+    fetchData();
+  }, []);
+  const router       = useRouter();
   const handleChange = useCallback((value) => {
     console.log(value);
   }, []);
-
+  const onDetail     = useCallback((value) => {
+    router.push(`/sanpham/${value.id}`);
+  }, []);
+  if (loading) {
+    return <Spinner size={'default'}/>
+  }
   return <div className='product'>
     <div className='header'>
       <div>
         <Breadcrumb>
           <Breadcrumb.Item>
-            <a href="">Trang chủ</a>
+            <Link href="/trangchu">Trang chủ</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
             Sản phẩm
@@ -62,28 +64,25 @@ const Product = () => {
       </Select>
     </div>
     <div className='list-product'>
-      {mockData.map(item => {
-        return <div style={{paddingBottom: 10}}>
+      {products.map(item => {
+        return <span key={item.id} style={{paddingBottom: 10, paddingRight: 10, paddingLeft: 10}}>
           <Card
             style={{width: 298}}
             cover={
               <img
                 alt="example"
-                src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                src={item.photoURL}
               />
             }
             actions={[
-              <Icon type="setting" key="setting"/>,
-              <Icon type="edit" key="edit"/>,
-              <Icon type="ellipsis" key="ellipsis"/>,
-            ]}
-          >
+              <span onClick={() => onDetail(item)}>Detail</span>
+            ]}>
             <Meta
               title={item.name}
               description={item.description}
             />
-          </Card>
-        </div>
+           </Card>
+        </span>
       })}
     </div>
   </div>

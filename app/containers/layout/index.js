@@ -1,25 +1,53 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
+import {useRouter} from 'next/router'
 import {
   Layout,
   Menu,
 } from 'antd';
-import HomePage from "../trangchu";
-import Product from "../sanpham";
-import Information from "../thongtin";
-import DropdownCustom from "../../components/Dropdown";
 import Link from "next/link";
 
-const {Header, Content, Footer} = Layout;
+import DropdownCustom from "../../components/Dropdown";
 
-const MainLayOut = (props) => {
-  const [listMenu]                  = useState([
+const {Header, Content, Footer} = Layout;
+const items                     = (
+  <Menu>
+    <Menu.Item>
+      <Link href="/dichvu/baohanh">Chính sách bảo hành</Link>
+    </Menu.Item>
+    <Menu.Item>
+      <Link href="/dichvu/baoduong">Bảo dưỡng định kỳ</Link>
+    </Menu.Item>
+    <Menu.Item>
+      <Link href="/dichvu/phutung"> Phụ tùng chính hiệu</Link>
+    </Menu.Item>
+    <Menu.Item>
+      <Link href="/dichvu/suachua"> Sửa chữa</Link>
+    </Menu.Item>
+    <Menu.Item>
+      <Link href="/dichvu/datlichbaoduong">Đặt lịch bảo dưỡng</Link>
+    </Menu.Item>
+    <Menu.Item>
+      <Link href="/dichvu/cuuhogiaothong"> Cứu hộ giao thông</Link>
+    </Menu.Item>
+  </Menu>
+);
+const MainLayOut                = (props) => {
+  const router       = useRouter();
+  const pathName     = router.pathname.slice(1);
+  const [listMenu]   = useState([
     {key: 'trangchu', label: 'Trang chủ'},
     {key: 'sanpham', label: 'Sản phẩm',},
     {key: 'thongtin', label: 'Thông tin'},
-    {key: 'dichvu', label: 'Dịch vụ', component: <DropdownCustom name={'Dịch vụ'}/>}
+    {key: 'banggia', label: 'Bảng giá'},
+    {key: 'dichvu', label: 'Dịch vụ', component: <DropdownCustom items={items} name={'Dịch vụ'}/>}
   ]);
-  const [currentTab, setCurrentTab] = useState('trangchu');
-  console.log({currentTab})
+  const [currentTab] = useState(pathName || 'trangchu');
+  const onSelectTab  = useCallback((tab) => {
+    if (tab.key === 'dichvu') {
+      return;
+    }
+    router.push(`/${tab.key}`)
+  }, []);
   return <Layout>
     <Header style={{position: 'fixed', zIndex: 1, width: '100%', background: '#fff'}}>
       <Menu
@@ -30,11 +58,9 @@ const MainLayOut = (props) => {
       >
         {listMenu.map(item => {
           return <Menu.Item
-            onClick={() => setCurrentTab(item.key)}
+            onClick={() => onSelectTab(item)}
             key={item.key}>
-            <Link href={`/${item.key}`}>
-              {item.component ? item.component : item.label}
-            </Link>
+            {item.component ? item.component : item.label}
           </Menu.Item>
         })}
       </Menu>
