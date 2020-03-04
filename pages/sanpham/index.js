@@ -5,7 +5,7 @@ import React, {
 } from 'react';
 import {
   Breadcrumb,
-  Card,
+  Card, Col, Row,
   Select
 } from "antd";
 
@@ -64,25 +64,31 @@ const Product = () => {
       </Select>
     </div>
     <div className='list-product'>
-      {products.map(item => {
-        return <span key={item.id} style={{paddingBottom: 10, paddingRight: 10, paddingLeft: 10}}>
-          <Card
-            style={{width: 298}}
-            cover={
-              <img
-                alt="example"
-                src={item.photoURL}
-              />
-            }
-            actions={[
-              <span onClick={() => onDetail(item)}>Detail</span>
-            ]}>
-            <Meta
-              title={item.name}
-              description={item.description}
-            />
-           </Card>
-        </span>
+      {products.map((item, index) => {
+        return <div key={index} className="product-list">
+          <Row className='content'>
+            <Col span={12}>
+              <a className="post-img" href="https://vinfast.vin/car/vinfast-lux-a/" title="VinFast Lux A2.0">
+                <img
+                  src="https://vinfast.vin/wp-content/uploads/vinfast-lux-a-trang-500x300.png" width="500" height="300"
+                  className="img-responsive center-block wp-post-image" alt="VinFast Lux A màu Trắng"
+                  data-lazy-loaded="true" style={{display: 'block'}}/>
+              </a>
+            </Col>
+            <Col span={12}>
+              <div className='header-post'>
+                <span className='post-title'>{item.name}</span>
+                <span className="price">{item.price} VNĐ</span>
+              </div>
+              <p className="text-justify">
+                {item.description}
+              </p>
+              <div>
+                <a href='#'>Chi Tiết</a>
+              </div>
+            </Col>
+          </Row>
+        </div>
       })}
     </div>
   </div>

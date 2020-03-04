@@ -38,7 +38,7 @@ const MainLayOut                = (props) => {
     {key: 'trangchu', label: 'Trang chủ'},
     {key: 'sanpham', label: 'Sản phẩm',},
     {key: 'thongtin', label: 'Thông tin'},
-    {key: 'banggia', label: 'Bảng giá'},
+    // {key: 'banggia', label: 'Bảng giá'},
     {key: 'dichvu', label: 'Dịch vụ', component: <DropdownCustom items={items} name={'Dịch vụ'}/>}
   ]);
   const [currentTab] = useState(pathName || 'trangchu');
