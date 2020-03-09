@@ -68,12 +68,12 @@ const Product = () => {
         return <div key={index} className="product-list">
           <Row className='content'>
             <Col span={12}>
-              <a className="post-img" href="https://vinfast.vin/car/vinfast-lux-a/" title="VinFast Lux A2.0">
+              <Link className="post-img" href={`/sanpham/${item.id}`} title="VinFast Lux A2.0">
                 <img
                   src="https://vinfast.vin/wp-content/uploads/vinfast-lux-a-trang-500x300.png" width="500" height="300"
                   className="img-responsive center-block wp-post-image" alt="VinFast Lux A màu Trắng"
                   data-lazy-loaded="true" style={{display: 'block'}}/>
-              </a>
+              </Link>
             </Col>
             <Col span={12}>
               <div className='header-post'>
@@ -84,7 +84,7 @@ const Product = () => {
                 {item.description}
               </p>
               <div>
-                <a href='#'>Chi Tiết</a>
+                <Link href={`/sanpham/${item.id}`}>Chi Tiết</Link>
               </div>
             </Col>
           </Row>
