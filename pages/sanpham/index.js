@@ -5,42 +5,32 @@ import React, {
 } from 'react';
 import {
   Breadcrumb,
-  Card, Col, Row,
+  Col, Row,
   Select
 } from "antd";
-
-import {useRouter} from 'next/router'
 import Link from "next/link";
 
-import {firebaseFirestore} from "../../firebaseConfig";
 import Spinner from "../../app/components/Spin";
 import "./sanpham.less"
+import useProduct from "../../app/hook/useProduct";
 
-const {Meta}   = Card;
 const {Option} = Select;
 
 const Product = () => {
+  const {getAllProduct} = useProduct();
   const [products, setProduct] = useState([]);
-  const [loading, setLoading]  = useState(true);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     async function fetchData() {
-      const snap   = [];
-      const result = await firebaseFirestore.collection("sanpham").get();
-      result.forEach(doc => {
-        snap.push(doc.data())
-      });
-      setProduct(snap);
+      const result = await getAllProduct();
+      setProduct(result);
       setLoading(false)
     }
 
     fetchData();
   }, []);
-  const router       = useRouter();
   const handleChange = useCallback((value) => {
     console.log(value);
-  }, []);
-  const onDetail     = useCallback((value) => {
-    router.push(`/sanpham/${value.id}`);
   }, []);
   if (loading) {
     return <Spinner size={'default'}/>

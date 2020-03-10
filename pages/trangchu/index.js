@@ -35,7 +35,7 @@ const listProduct = [
     description: 'Mẫu xe dành cho chủ doanh nghiệp nhỏ, taxi, gia đình cần một chiếc xe 7 chỗ rộng rãi, tiết kiệm nhiên liệu phục vụ nhu cầu đi lại hằng ngày và du lịch giải trí.'
   },
 ];
-const HomePage    = () => {
+const HomePage = () => {
   return <div className='home-page'>
     <div className='carousel'>
       <Carousel autoplaySpeed={3000} autoplay>
@@ -76,12 +76,14 @@ const HomePage    = () => {
       <iframe
         style={{paddingRight: 10}}
         title="Xưởng dịch vụ Mitsubishi Kim Liên Hà Nội | Dịch vụ sửa chữa Ô tô| Mitsubishi Kim Liên Hà Nội"
-        width="500" height="300" src="https://www.youtube.com/embed/_1f_Adsa3aU?feature=oembed"
+        width="500" height="300"
+        src="https://www.youtube.com/embed/_1f_Adsa3aU?feature=oembed"
         frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen=""/>
       <iframe
         title="Mitsubishi New Triton 2019 - Mạnh mẽ vượt trội (TVC) | Mitsubishi Kim Liên Hà Nội"
-        width="500" height="300" src="https://www.youtube.com/embed/Og0dxlGeWKg?feature=oembed"
+        width="500" height="300"
+        src="https://www.youtube.com/embed/Og0dxlGeWKg?feature=oembed"
         frameBorder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen=""/>
@@ -182,8 +184,8 @@ const HomePage    = () => {
           alt="" width="428" height="50"/>
       </p>
       <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
-        {listProduct.map(item => {
-          return <div style={{maxWidth: 320, margin: 10}}>
+        {listProduct.map((item, index) => {
+          return <div key={index} style={{maxWidth: 320, margin: 10}}>
             <img
               width="320" height="145"
               src={item.photoURL}
@@ -207,8 +209,7 @@ const HomePage    = () => {
       </p>
       <div className='text-center'>
         <img
-          style={{border: '1px solid #f1f1f1'}}
-          width="800" height="1040"
+          style={{border: '1px solid #f1f1f1', maxWidth: 750, height: 1040}}
           src="https://mitsubishikimlienphamvandong.com.vn/wp-content/uploads/2019/09/chung-nhan-dai-ly-mitsu-pvd-min.jpg"
           data-src="https://mitsubishikimlienphamvandong.com.vn/wp-content/uploads/2019/09/chung-nhan-dai-ly-mitsu-pvd-min.jpg"
           className="attachment-original size-original lazy-load-active" alt=""
