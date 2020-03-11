@@ -40,7 +40,7 @@ const Product = () => {
       <div>
         <Breadcrumb>
           <Breadcrumb.Item>
-            <Link href="/trangchu">Trang chủ</Link>
+            <Link href={"/trangchu"}>Trang chủ</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
             Sản phẩm
@@ -58,12 +58,10 @@ const Product = () => {
         return <div key={index} className="product-list">
           <Row className='content'>
             <Col span={12}>
-              <Link className="post-img" href={`/sanpham/${item.id}`} title="VinFast Lux A2.0">
-                <img
-                  src="https://vinfast.vin/wp-content/uploads/vinfast-lux-a-trang-500x300.png" width="500" height="300"
-                  className="img-responsive center-block wp-post-image" alt="VinFast Lux A màu Trắng"
-                  data-lazy-loaded="true" style={{display: 'block'}}/>
-              </Link>
+              <img
+                src={item.photoURL}
+                style={{display: 'block', maxWidth: 400}}
+                alt=''/>
             </Col>
             <Col span={12}>
               <div className='header-post'>
@@ -74,7 +72,9 @@ const Product = () => {
                 {item.description}
               </p>
               <div>
-                <Link href={`/sanpham/${item.id}`}>Chi Tiết</Link>
+                <Link
+                  href={item.type === 'new' ? item.redirect : `/sanpham/${item.id}`}
+                >Chi Tiết</Link>
               </div>
             </Col>
           </Row>

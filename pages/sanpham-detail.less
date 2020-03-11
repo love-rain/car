@@ -1,18 +1,11 @@
-@import "~antd/dist/antd.less";
 .product-detail {
   .carousel {
-    padding-bottom: 20px;
-
-    .ant-carousel .slick-slide {
-      text-align: center;
-      height: 500px;
-      line-height: 160px;
-      background: #364d79;
-      overflow: hidden;
+    .carousel .thumb.selected, .carousel .thumb:hover {
+      border: 1px solid #b4b4b4;
     }
 
-    .ant-carousel .slick-slide h3 {
-      color: #fff;
+    .carousel .slide {
+      background: #ffffff;
     }
   }
 
@@ -37,7 +30,6 @@
   }
 
   .version {
-
   }
 
   .line {
@@ -47,11 +39,13 @@
   }
 
   .detail {
-    text-align: center;
+    //text-align: center;
   }
+
   .option-img {
     display: flex;
     justify-content: center;
   }
+
   //Carousel
 }
