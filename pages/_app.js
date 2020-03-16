@@ -15,11 +15,16 @@ moment.locale('vi');
 
 
 Router.events.on('routeChangeComplete', () => {
-  if (process.env.NODE_ENV !== 'production') {
-    const els       = document.querySelectorAll('link[href*="/_next/static/css/styles.chunk.css"]');
-    const timestamp = new Date().valueOf();
-    els[0].href     = '/_next/static/css/styles.chunk.css?v=' + timestamp;
-  }
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
+  });
+  // if (process.env.NODE_ENV !== 'production') {
+  //   const els       = document.querySelectorAll('link[href*="/_next/static/css/styles.chunk.css"]');
+  //   const timestamp = new Date().valueOf();
+  //   els[0].href     = '/_next/static/css/styles.chunk.css?v=' + timestamp;
+  // }
 });
 
 class MyApp extends App {

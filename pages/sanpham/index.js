@@ -8,11 +8,15 @@ import {
   Col, Row,
   Select
 } from "antd";
+import _ from 'lodash'
+import currencyFormatter from 'currency-formatter'
 import Link from "next/link";
 
 import Spinner from "../../app/components/Spin";
-import "./sanpham.less"
 import useProduct from "../../app/hook/useProduct";
+import {NEW} from "../../app/constance";
+
+import "./sanpham.less"
 
 const {Option} = Select;
 
@@ -30,8 +34,17 @@ const Product = () => {
     fetchData();
   }, []);
   const handleChange = useCallback((value) => {
-    console.log(value);
-  }, []);
+    if (value === NEW) {
+      // const newList = _.sortBy(products, [function (o) {
+      //   const result = o.type === NEW;
+      //   console.log(result);
+      //   return;
+      // }]);
+      return;
+    }
+    const newList = _.orderBy(products, ['price'], [value]);
+    setProduct(newList)
+  }, [products]);
   if (loading) {
     return <Spinner size={'default'}/>
   }
@@ -48,7 +61,7 @@ const Product = () => {
         </Breadcrumb>
       </div>
       <Select defaultValue="Thứ tự mặc định" className='custom-dropdown' onChange={handleChange}>
-        <Option value="newest">Mới nhất </Option>
+        <Option value="new">Mới nhất </Option>
         <Option value="desc">Từ cao đến thấp</Option>
         <Option value="asc">Từ thấp đến cao</Option>
       </Select>
@@ -57,16 +70,23 @@ const Product = () => {
       {products.map((item, index) => {
         return <div key={index} className="product-list">
           <Row className='content'>
-            <Col span={12}>
-              <img
-                src={item.photoURL}
-                style={{display: 'block', maxWidth: 400}}
-                alt=''/>
+            <Col span={8}>
+              <Link
+                href={item.type === NEW ? item.redirect : `/sanpham/${item.id}`}
+              >
+                <img
+                  className='responsive-img'
+                  src={item.photoURL}
+                  style={{display: 'block', cursor: 'pointer'}}
+                  alt=''/>
+              </Link>
             </Col>
-            <Col span={12}>
+            <Col style={{paddingLeft: 40}} span={16}>
               <div className='header-post'>
                 <span className='post-title'>{item.name}</span>
-                <span className="price">{item.price} VNĐ</span>
+                <span className="price">
+                  {currencyFormatter.format(item.price, {code: 'VND', symbol: 'VND'})}
+                </span>
               </div>
               <p className="text-justify">
                 {item.description}

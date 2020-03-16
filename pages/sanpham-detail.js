@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
 import {useRouter} from "next/router";
 import {Carousel} from 'react-responsive-carousel';
+import currencyFormatter from 'currency-formatter'
 import {Card, Col, Row, Tabs} from "antd";
 
 import useProduct from "../app/hook/useProduct";
@@ -8,6 +9,13 @@ import Spinner from "../app/components/Spin";
 
 const {TabPane} = Tabs;
 const {Meta} = Card;
+
+import {MIRAGE, NEW, NEW_TRITON, OUTLANDER, PAJERO_SPORT, XPANDER} from "../app/constance";
+import OutLander from "../app/containers/mota-xe/outlander";
+import Xpander from "../app/containers/mota-xe/xpander";
+import Mirage from "../app/containers/mota-xe/mirage";
+import NewTriton from "../app/containers/mota-xe/new-triton";
+import PajeroSport from "../app/containers/mota-xe/pajero-sport";
 
 import './sanpham-detail.less'
 
@@ -50,19 +58,29 @@ import './sanpham-detail.less'
 // ];
 
 const DetailProduct = () => {
-  const {getDetailProduct} = useProduct();
+  const {getAllProduct, getDetailProduct} = useProduct();
   // const {fakeVersion, fakeThumbs} = useFakeData();
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [detailProduct, setDetailProduct] = useState([]);
+  const [listProduct, setListProduct] = useState([]);
   useEffect(() => {
     async function fetchData() {
       const product = await getDetailProduct(router.query.id);
+      const list = await getAllProduct();
+      setListProduct(list);
       setDetailProduct(product);
       setLoading(false)
     }
 
     fetchData();
+  }, []);
+
+  const onSelectProduct = useCallback((val) => {
+    if (val.type === NEW) {
+      return router.push(val.link)
+    }
+    router.push(`/sanpham/${val.id}`)
   }, []);
   if (loading) {
     return <Spinner size={'default'}/>
@@ -72,17 +90,19 @@ const DetailProduct = () => {
       <Col span={12}>
         <div className='carousel'>
           <Carousel
+            showStatus={false}
             infiniteLoop={true}
             showArrows={true}
             showIndicators={false}
             showThumbs={true}
-            // autoPlay={true}
+            autoPlay={true}
             verticalSwipe={'standard'}
             transitionTime={240}
             width={'80%'}>
             {detailProduct.thumbs.map((item, index) => {
               return <div key={index}>
                 <img
+                  className='responsive-img'
                   src={item}
                   alt=''
                 />
@@ -93,7 +113,9 @@ const DetailProduct = () => {
       </Col>
       <Col span={12}>
         <h1>{detailProduct.name}</h1>
-        <div className='price'>{detailProduct.price} VND</div>
+        <div className='price'>
+          {currencyFormatter.format(detailProduct.price, {code: 'VND', symbol: 'VND'})}
+        </div>
         <div className='description'>
           {detailProduct.description}
         </div>
@@ -105,7 +127,7 @@ const DetailProduct = () => {
         <div>
           <a href="tel:0973645596" target="_self"
              className="hotline">
-            <span>HOTLINE BÁO GIÁ: 097 364 5596</span>
+            <span style={{fontWeight: 800}}>HOTLINE BÁO GIÁ: 097 364 5596</span>
           </a>
         </div>
       </Col>
@@ -124,7 +146,7 @@ const DetailProduct = () => {
             >
               <Meta
                 title={`${item.name}`}
-                description={`${item.info.price} VND`}/>
+                description={`${currencyFormatter.format(item.info.price, {code: 'VND', symbol: 'VND'})}`}/>
             </Card>
           })}
         </div>
@@ -135,13 +157,41 @@ const DetailProduct = () => {
         <Tabs defaultActiveKey="1">
           {detailProduct.version.map((item) => {
             return <TabPane style={{textAlign: 'center', minHeight: 900}} tab={item.name} key={item.name}>
-              <img style={{maxWidth: 600, paddingBottom: 20}} src={item.info.specification} alt=""/>
+              <img style={{paddingBottom: 20, maxWidth: '80%', height: 'auto'}} src={item.info.specification} alt=""/>
             </TabPane>
           })}
         </Tabs>
       </div>
+      <div className='line'/>
+      <h3 style={{paddingBottom: 20}}>Mô tả</h3>
+      <div className='mota'>
+        {detailProduct.type === OUTLANDER && <OutLander/>}
+        {detailProduct.type === XPANDER && <Xpander/>}
+        {detailProduct.type === MIRAGE && <Mirage/>}
+        {detailProduct.type === NEW_TRITON && <NewTriton/>}
+        {detailProduct.type === PAJERO_SPORT && <PajeroSport/>}
+      </div>
+      <div className='line'/>
+      <div>
+        <h3>Có thể bạn quan tâm</h3>
+        <div style={{display: 'flex', flexWrap: 'wrap'}}>
+          {listProduct.map((item, index) => {
+            return <Card
+              bordered={false}
+              key={index}
+              hoverable
+              onClick={() => onSelectProduct(item)}
+              style={{width: 240, marginRight: 10, marginBottom: 10}}
+              cover={<img style={{height: 120}} alt="" src={item.photoURL}/>}
+            >
+              <Meta
+                title={`${item.name}`}
+                description={`${item.price} VND`}/>
+            </Card>
+          })}
+        </div>
+      </div>
     </div>
-    <h3>Nội thất</h3>
   </div>
 };
 
