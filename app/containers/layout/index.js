@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {BackTop, Select} from 'antd';
+import {BackTop} from 'antd';
 import {useRouter} from 'next/router'
 import {
   Layout, List,
@@ -10,29 +10,27 @@ import DropdownCustom from "../../components/Dropdown";
 import "./layout.less"
 import useProduct from "../../hook/useProduct";
 import ModalCustom from "../../components/Modal";
-// import {FacebookOutlined} from "@ant-design/icons";
 
-const {Option} = Select;
 const {Header, Content, Footer} = Layout;
 const items = (
   <Menu>
     <Menu.Item>
-      <Link href="/dichvu/baohanh">Chính sách bảo hành</Link>
+      <Link href={"/dichvu/baohanh"}>Chính sách bảo hành</Link>
     </Menu.Item>
     <Menu.Item>
-      <Link href="/dichvu/baoduong">Bảo dưỡng định kỳ</Link>
+      <Link href={"/dichvu/baoduong"}>Bảo dưỡng định kỳ</Link>
     </Menu.Item>
     <Menu.Item>
-      <Link href="/dichvu/phutung"> Phụ tùng chính hiệu</Link>
+      <Link href={"/dichvu/phutung"}> Phụ tùng chính hiệu</Link>
     </Menu.Item>
     <Menu.Item>
-      <Link href="/dichvu/suachua"> Sửa chữa</Link>
+      <Link href={"/dichvu/suachua"}> Sửa chữa</Link>
     </Menu.Item>
     <Menu.Item>
-      <Link href="/dichvu/datlichbaoduong">Đặt lịch bảo dưỡng</Link>
+      <Link href={"/dichvu/datlichbaoduong"}>Đặt lịch bảo dưỡng</Link>
     </Menu.Item>
     <Menu.Item>
-      <Link href="/dichvu/cuuhogiaothong"> Cứu hộ giao thông</Link>
+      <Link href={"/dichvu/cuuhogiaothong"}> Cứu hộ giao thông</Link>
     </Menu.Item>
   </Menu>
 );
@@ -73,6 +71,12 @@ const MainLayOut = (props) => {
     {link: 'dichvu', label: 'Dịch vụ', component: <DropdownCustom items={items} name={'Dịch vụ'}/>},
     {link: 'gioithieu', label: 'Giới thiệu'},
     {link: 'dangkylaithu', label: 'Đăng ký lái thử'},
+    {
+      link: '', label: '',
+      component: <a style={{color: 'red'}} href="tel:0973645596" target="_self">
+        <span style={{fontWeight: 800}}>HOTLINE BÁO GIÁ: 097 364 5596</span>
+      </a>
+    },
   ]);
   const [currentTab] = useState(pathName || 'trangchu');
   useEffect(() => {
@@ -92,16 +96,13 @@ const MainLayOut = (props) => {
   const handleCancel = useCallback(() => {
     setVisible(false)
   }, []);
-  const handleChangeCar = useCallback((value) => {
-    setCarSelect(value)
-  }, []);
   return <Layout className='layout'>
-    <Header style={{position: 'fixed', zIndex: 1, width: '100%', background: '#fff'}}>
+    <Header>
       <Menu
-        theme='light'
+        theme="dark"
         mode="horizontal"
         defaultSelectedKeys={[currentTab]}
-        style={{lineHeight: '64px', display: 'flex', justifyContent: 'space-between'}}
+        style={{lineHeight: '64px'}}
       >
         {listMenu.map(item => {
           return <Menu.Item
@@ -112,8 +113,8 @@ const MainLayOut = (props) => {
         })}
       </Menu>
     </Header>
-    <Content style={{marginTop: 64, padding: '20px 50px'}}>
-      <div style={{background: '#fff', padding: 24, minHeight: 655}}>
+    <Content>
+      <div style={{background: '#fff', minHeight: 655}}>
         {props.children}
       </div>
     </Content>

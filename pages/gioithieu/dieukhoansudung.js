@@ -2,7 +2,7 @@ import React from 'react';
 
 const TermOfUse = () => {
   return (
-    <div className="col-inner">
+    <div style={{padding: 24}} className="fs-16">
       <h1 className='text-center'>ĐIỀU KHOẢN SỬ DỤNG</h1>
       <p>Mitsubishi Kim Liên Hà Nội xin gửi lời chào trân trọng tới quý khách hàng ghé thăm trang thông tin điện tử
         (website) của Công ty tại địa chỉ https://mitsubishikimlienphamvandong.com.vn . Chúng tôi rất cảm ơn sự quan tâm
@@ -15,15 +15,15 @@ const TermOfUse = () => {
       <p>Mọi thông tin của khách hàng đều là những nội dung quan trọng với Mitsubishi Kim Liên Hà Nội, vì vậy việc bảo
         vệ lĩnh vực riêng tư của bạn trong quá trình xử l‎ý thông tin cá nhân là điều quan trọng mà chúng tôi đặc biệt
         lưu tâm trong suốt quá trình làm việc.<br/>
-          Trong vài vùng trên trang thông tin điện tử, Mitsubishi Kim Liên Hà Nội có thể yêu cầu bạn cho biết một số
-          thông tin nhận biết cá nhân trước khi cung cấp cho bạn một dịch vụ nào đó. Các thông tin này, ví dụ như tên,
-          địa chỉ thư tín, địa chỉ email, và các dạng yêu cầu, sẽ được thu nhận và lưu trữ phù hợp với bản chất của yêu
-          cầu đó để đáp ứng nhu cầu của bạn. Nói cách khác, tất cả các thông tin bạn đưa ra sẽ được sử dụng để nâng cao
-          chất lượng dịch vụ mà Mitsubishi Kim Liên Hà Nội cung cấp cho bạn.<br/>
-          Bạn có thể tin tưởng rằng, mọi thông tin bạn chia sẻ đều được Mitsubishi Kim Liên Hà Nội giữ gìn và cố gắng
-          bảo mật, đồng thời luôn áp dụng những quy trình và chính sách bảo mật tốt nhất nhằm bảo vệ dữ liệu thông tin
-          cá nhân của bạn khỏi mọi hành vi truy cập trái phép, phá hoại, sử dụng, chỉnh sửa và tiết lộ, ngoại trừ những
-          điều được đưa ra dưới đây:</p>
+        Trong vài vùng trên trang thông tin điện tử, Mitsubishi Kim Liên Hà Nội có thể yêu cầu bạn cho biết một số
+        thông tin nhận biết cá nhân trước khi cung cấp cho bạn một dịch vụ nào đó. Các thông tin này, ví dụ như tên,
+        địa chỉ thư tín, địa chỉ email, và các dạng yêu cầu, sẽ được thu nhận và lưu trữ phù hợp với bản chất của yêu
+        cầu đó để đáp ứng nhu cầu của bạn. Nói cách khác, tất cả các thông tin bạn đưa ra sẽ được sử dụng để nâng cao
+        chất lượng dịch vụ mà Mitsubishi Kim Liên Hà Nội cung cấp cho bạn.<br/>
+        Bạn có thể tin tưởng rằng, mọi thông tin bạn chia sẻ đều được Mitsubishi Kim Liên Hà Nội giữ gìn và cố gắng
+        bảo mật, đồng thời luôn áp dụng những quy trình và chính sách bảo mật tốt nhất nhằm bảo vệ dữ liệu thông tin
+        cá nhân của bạn khỏi mọi hành vi truy cập trái phép, phá hoại, sử dụng, chỉnh sửa và tiết lộ, ngoại trừ những
+        điều được đưa ra dưới đây:</p>
       <p>Chúng tôi có thể tiết lộ những thông tin trên cho bên thứ ba nếu bạn đồng ý tiết lộ.<br/>
         Chúng tôi có thể tiết lộ những thông tin trên cho chi nhánh và đại lý của mình và những đối tác tiếp nhận khảo
         sát sản phẩm. Những đối tượng này sẽ truy cập thông tin cá nhân của bạn ở mức độ cần thiết để thực hiện chức
@@ -38,8 +38,8 @@ const TermOfUse = () => {
         lẻ. Tuy nhiên, Mitsubishi Kim Liên Hà Nội có quyền thay đổi hoặc hủy bỏ mẫu mã, đặc tính, thông số kỹ thuật,
         thiết kế và giá cả của sản phẩm được đề cập trên trang thông tin điện tử này vào bất cứ thời điểm nào mà không
         cần phải thông báo trước.<br/>
-          Vui lòng hãy liên hệ với Mitsubishi Kim Liên Hà Nội để có thông tin hoặc chi tiết mới nhất, phù hợp và chính
-          xác nhất.</p>
+        Vui lòng hãy liên hệ với Mitsubishi Kim Liên Hà Nội để có thông tin hoặc chi tiết mới nhất, phù hợp và chính
+        xác nhất.</p>
       <h2>MỘT SỐ MIỄN TRỪ TRÁCH NHIỆM NHẤT ĐỊNH</h2>
       <h3>1/ Trách nhiệm thông tin</h3>
       <p>Thông tin trên trang thông tin điện tử này do Mitsubishi Kim Liên Hà Nội cung cấp và hoàn toàn hợp pháp.
@@ -58,12 +58,12 @@ const TermOfUse = () => {
         Liên Hà Nội cung cấp những kết nối này nhằm thuận tiện hơn cho bạn và điều đó không có nghĩa là Mitsubishi Kim
         Liên Hà Nội chịu trách nhiệm cho các trang kết nối này hay trang thông tin điện tử nay dưới quyền kiểm soát của
         Mitsubishi Kim Liên Hà Nội.<br/>
-          Xin vui lòng biết rằng Mitsubishi Kim Liên Hà Nội không chịu trách nhiệm thực hiện hay các quy định về quyền
-          riêng tư hay nội dung hoặc các quy định về bảo mật đối với những trang thông tin điện tử đó. Quyền sử dụng của
-          bạn đối với các liên kết và ứng dụng tùy thuộc vào chính sách riêng của các trang kết nối hay trang thông tin
-          điện tử đó. Do vậy, Chúng tôi khuyến khích người sử dụng tìm hiểu chính sách về quyền riêng tư, hướng dẫn bảo
-          mật cũng như các nội dung của các trang kết nối hay trang thông tin điện tử này trước khi sử dụng liên kết
-          hoặc ứng dụng đó.</p>
+        Xin vui lòng biết rằng Mitsubishi Kim Liên Hà Nội không chịu trách nhiệm thực hiện hay các quy định về quyền
+        riêng tư hay nội dung hoặc các quy định về bảo mật đối với những trang thông tin điện tử đó. Quyền sử dụng của
+        bạn đối với các liên kết và ứng dụng tùy thuộc vào chính sách riêng của các trang kết nối hay trang thông tin
+        điện tử đó. Do vậy, Chúng tôi khuyến khích người sử dụng tìm hiểu chính sách về quyền riêng tư, hướng dẫn bảo
+        mật cũng như các nội dung của các trang kết nối hay trang thông tin điện tử này trước khi sử dụng liên kết
+        hoặc ứng dụng đó.</p>
       <h2>QUYỀN THAY ĐỔI</h2>
       <p>Mitsubishi Kim Liên Hà Nội giữ quyền thay đổi những Điều khoản sử dụng trên đây và bất kỳ thông tin nào trong
         trang thông tin điện tử này vào bất kỳ lúc nào mà không cần phải thông báo trước cho bạn. Mitsubishi Kim Liên Hà

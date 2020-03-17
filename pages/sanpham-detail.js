@@ -83,7 +83,7 @@ const DetailProduct = () => {
     router.push(`/sanpham/${val.id}`)
   }, []);
   if (loading) {
-    return <Spinner size={'default'}/>
+    return <Spinner style={{paddingTop: 20}} size={'default'}/>
   }
   return <div className='product-detail'>
     <Row>

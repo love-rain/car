@@ -2,9 +2,9 @@ import React from 'react';
 
 
 const Information = () => {
-  return <div>
-    <h1 style={{textAlign: 'center'}}>GIỚI THIỆU VỀ MITSUBISHI KIM LIÊN HÀ NỘI</h1>
-    <span style={{lineHeight: 2.5}}>
+  return <div style={{padding:24}} className='fs-16'>
+    <h1 className='text-center'>GIỚI THIỆU VỀ MITSUBISHI KIM LIÊN HÀ NỘI</h1>
+    <span>
       <b>Mitsubishi Kim Liên Hà Nội</b> tọa lạc trên Đường Phạm Văn Đồng – Được phát triển theo tiêu chuẩn của Mitsubishi
     Motors với ý tưởng lấy khách hàng là trung tâm. Từng chi tiết, từng khu vực, từng quy trình tại<b> Mitsubishi Kim
     Liên Hà Nội</b> đều được trau chuốt kỹ lưỡng cùng với đội ngũ kỹ thuật viên và tư vấn bán hàng

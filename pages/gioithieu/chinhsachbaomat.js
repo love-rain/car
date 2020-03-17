@@ -2,7 +2,7 @@ import React from 'react';
 
 const PrivacyPolicy = () => {
   return (
-    <div className="col-inner">
+    <div style={{padding: 24}} className="fs-16">
       <h1 className='text-center'>CHÍNH SÁCH BẢO MẬT THÔNG TIN</h1>
       <p>Mitsubishi Kim Liên Hà Nội hiểu rõ tầm quan trọng và tôn trọng quyền bảo mật thông tin cá nhân (“Thông tin”)
         của người truy cập website và sử dụng dịch vụ của Mitsubishi Kim Liên Hà Nội</p>

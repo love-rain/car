@@ -6,8 +6,8 @@ import {
 import "./styles.less"
 
 const DropdownCustom = (props) => {
-  return <Dropdown overlay={props.items}>
-    <span className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+  return <Dropdown overlay={props.items} className="ant-dropdown-link">
+    <span onClick={e => e.preventDefault()} className="ant-dropdown-link">
       {props.name}
     </span>
   </Dropdown>

@@ -45,7 +45,7 @@ const Product = () => {
     setProductRaw(newList)
   }, [products]);
   if (loading) {
-    return <Spinner size={'default'}/>
+    return <Spinner style={{paddingTop: 20}} size={'default'}/>
   }
   return <div className='product'>
     <div className='header'>
