@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {BackTop, Button, Input, Select} from 'antd';
+import {BackTop, Select} from 'antd';
 import {useRouter} from 'next/router'
 import {
   Layout, List,
@@ -10,6 +10,7 @@ import DropdownCustom from "../../components/Dropdown";
 import "./layout.less"
 import useProduct from "../../hook/useProduct";
 import ModalCustom from "../../components/Modal";
+// import {FacebookOutlined} from "@ant-design/icons";
 
 const {Option} = Select;
 const {Header, Content, Footer} = Layout;
@@ -54,8 +55,8 @@ const MainLayOut = (props) => {
     {label: 'Điều khoản sử dụng', link: '/gioithieu/dieukhoansudung'},
   ]);
   const [visible, setVisible] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [carSelect, setCarSelect] = useState('');
+  // const [loading, setLoading] = useState(false);
+  // const [carSelect, setCarSelect] = useState('');
   const onSelectTab = useCallback((tab) => {
     if (tab.link === 'dichvu') {
       return;
@@ -156,24 +157,11 @@ const MainLayOut = (props) => {
       visible={visible}
       onOk={handleOk}
       onCancel={handleCancel}
-      footer={<div>
-        <Button key="back" onClick={handleCancel}>
-          Cancel
-        </Button>
-        <Button key="submit" type="primary" loading={loading} onClick={handleOk}>
-          OK
-        </Button>
-      </div>}
     >
-      <div style={{paddingBottom: 10}}>
-        <strong>
-          <span style={{color: '#ed1c24', fontSize: '16px'}}>Chú ý: Liên hệ để có giá ưu đãi nhất</span>
-        </strong>
-      </div>
       <span>
         <a href="tel:0973645596" target="_self"
            className="hotline">
-            <span style={{fontWeight: 800}}>HOTLINE BÁO GIÁ: 097 364 5596</span>
+            <span style={{fontWeight: 800}}>HOTLINE TƯ VẤN: 097 364 5596</span>
           </a> 
       </span>
       {/*<Input style={{marginBottom: 15}} placeholder="Họ và tên*"/>*/}

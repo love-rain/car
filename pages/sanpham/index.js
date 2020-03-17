@@ -23,11 +23,13 @@ const {Option} = Select;
 const Product = () => {
   const {getAllProduct} = useProduct();
   const [products, setProduct] = useState([]);
+  const [productRaw, setProductRaw] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     async function fetchData() {
       const result = await getAllProduct();
       setProduct(result);
+      setProductRaw(result);
       setLoading(false)
     }
 
@@ -35,15 +37,12 @@ const Product = () => {
   }, []);
   const handleChange = useCallback((value) => {
     if (value === NEW) {
-      // const newList = _.sortBy(products, [function (o) {
-      //   const result = o.type === NEW;
-      //   console.log(result);
-      //   return;
-      // }]);
+      const newCar = products.filter(item => item.type === NEW);
+      setProductRaw(newCar);
       return;
     }
     const newList = _.orderBy(products, ['price'], [value]);
-    setProduct(newList)
+    setProductRaw(newList)
   }, [products]);
   if (loading) {
     return <Spinner size={'default'}/>
@@ -67,7 +66,7 @@ const Product = () => {
       </Select>
     </div>
     <div className='list-product'>
-      {products.map((item, index) => {
+      {productRaw.map((item, index) => {
         return <div key={index} className="product-list">
           <Row className='content'>
             <Col span={8}>
