@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from 'react'
 import {useRouter} from "next/router";
 import {Carousel} from 'react-responsive-carousel';
 import currencyFormatter from 'currency-formatter'
-import {Card, Col, Row, Tabs} from "antd";
+import {Card, Tabs} from "antd";
 
 import useProduct from "../app/hook/useProduct";
 import Spinner from "../app/components/Spin";
@@ -86,8 +86,8 @@ const DetailProduct = () => {
     return <Spinner style={{paddingTop: 20}} size={'default'}/>
   }
   return <div className='product-detail'>
-    <Row>
-      <Col span={12}>
+    <div style={{paddingBottom: 10}} className='row'>
+      <div className='col-sm-6'>
         <div className='carousel'>
           <Carousel
             showStatus={false}
@@ -98,7 +98,7 @@ const DetailProduct = () => {
             autoPlay={true}
             verticalSwipe={'standard'}
             transitionTime={240}
-            width={'80%'}>
+            width={'100%'}>
             {detailProduct.thumbs.map((item, index) => {
               return <div key={index}>
                 <img
@@ -110,8 +110,8 @@ const DetailProduct = () => {
             })}
           </Carousel>
         </div>
-      </Col>
-      <Col span={12}>
+      </div>
+      <div className='col-sm-6'>
         <h1>{detailProduct.name}</h1>
         <div className='price'>
           {currencyFormatter.format(detailProduct.price, {code: 'VND', symbol: 'VND'})}
@@ -127,11 +127,11 @@ const DetailProduct = () => {
         <div>
           <a href="tel:0973645596" target="_self"
              className="hotline">
-            <span style={{fontWeight: 800}}>HOTLINE BÁO GIÁ: 097 364 5596</span>
+            <span style={{fontWeight: 800}}>HOTLINE: 097 364 5596</span>
           </a>
         </div>
-      </Col>
-    </Row>
+      </div>
+    </div>
     <div>
       <div className='line'/>
       <div className="version">
@@ -156,8 +156,8 @@ const DetailProduct = () => {
         <h3>Thông số kỹ thuật</h3>
         <Tabs defaultActiveKey="1">
           {detailProduct.version.map((item) => {
-            return <TabPane style={{textAlign: 'center', minHeight: 900}} tab={item.name} key={item.name}>
-              <img style={{paddingBottom: 20, maxWidth: '80%', height: 'auto'}} src={item.info.specification} alt=""/>
+            return <TabPane className='tab-pane' tab={item.name} key={item.name}>
+              <img className='img-specification' src={item.info.specification} alt=""/>
             </TabPane>
           })}
         </Tabs>
@@ -182,7 +182,7 @@ const DetailProduct = () => {
               hoverable
               onClick={() => onSelectProduct(item)}
               style={{width: 240, marginRight: 10, marginBottom: 10}}
-              cover={<img style={{height: 120}} alt="" src={item.photoURL}/>}
+              cover={<img style={{height: 100}} alt="" src={item.photoURL}/>}
             >
               <Meta
                 title={`${item.name}`}

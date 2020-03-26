@@ -1,6 +1,7 @@
 .product-detail {
   line-height: 1.5;
   padding: 24px;
+
   .carousel {
     .carousel .thumb.selected, .carousel .thumb:hover {
       border: 1px solid #b4b4b4;
@@ -9,6 +10,31 @@
     .carousel .slide {
       background: #ffffff;
     }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .tab-pane {
+      min-height: 300px !important;
+    }
+
+    .img-specification {
+      max-width: 100% !important;
+    }
+
+    .mota {
+      padding: 0 14px !important;
+    }
+  }
+
+  .tab-pane {
+    text-align: center;
+    min-height: 800px
+  }
+
+  .img-specification {
+    padding-bottom: 20px;
+    max-width: 60%;
+    height: auto
   }
 
   .price {
@@ -29,7 +55,7 @@
     padding: 10px;
     text-align: center;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .version {
@@ -61,6 +87,7 @@
   .fs-16 {
     font-size: 16px;
   }
+
   .ant-card-meta-description {
     color: red;
   }

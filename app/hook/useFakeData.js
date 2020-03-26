@@ -16,9 +16,15 @@ const useFakeData = () => {
         thumbs
       }, {merge: true});
   }, []);
+  const fakeNews = useCallback((news) => {
+    firebaseFirestore.collection('news').add({
+        ...news
+      });
+  }, []);
   return {
     fakeThumbs,
-    fakeVersion
+    fakeVersion,
+    fakeNews
   };
 };
 

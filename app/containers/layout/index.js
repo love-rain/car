@@ -120,37 +120,41 @@ const MainLayOut = (props) => {
     </Content>
     <BackTop/>
     <Footer style={{display: 'flex', backgroundColor: '#000000'}}>
-      <List
-        header={<span style={{fontSize: '20px', color: '#fff', borderBottom: '2px solid'}}>Sản phẩm</span>}
-        size="small"
-        dataSource={listProduct}
-        renderItem={item => <List.Item
-          onClick={() => router.push(`/sanpham/${item.id}`)}
-          style={{color: '#fff', cursor: 'pointer'}}>{item.name}</List.Item>}
-      />
-      <div style={{paddingLeft: 100}}>
-        <List
-          header={<span style={{fontSize: '20px', color: '#fff', borderBottom: '2px solid'}}>Dịch vụ</span>}
-          size="small"
-          dataSource={optionsService}
-          renderItem={item => <List.Item
-            onClick={() => {
-              router.push(`${item.link}`)
-            }}
-            style={{color: '#fff', cursor: 'pointer'}}>{item.label}</List.Item>}
-        />
-      </div>
-      <div style={{paddingLeft: 100}}>
-        <List
-          header={<span style={{fontSize: '20px', color: '#fff', borderBottom: '2px solid'}}>Giới thiệu</span>}
-          size="small"
-          dataSource={optionsIntroduce}
-          renderItem={item => <List.Item
-            onClick={() => {
-              router.push(`${item.link}`)
-            }}
-            style={{color: '#fff', cursor: 'pointer'}}>{item.label}</List.Item>}
-        />
+      <div style={{width: '100%'}} className='row'>
+        <div className='col-sm-4'>
+          <List
+            header={<span style={{fontSize: '20px', color: '#fff', borderBottom: '2px solid'}}>Sản phẩm</span>}
+            size="small"
+            dataSource={listProduct}
+            renderItem={item => <List.Item
+              onClick={() => router.push(`/sanpham/${item.id}`)}
+              style={{color: '#fff', cursor: 'pointer'}}>{item.name}</List.Item>}
+          />
+        </div>
+        <div className='col-sm-4'>
+          <List
+            header={<span style={{fontSize: '20px', color: '#fff', borderBottom: '2px solid'}}>Dịch vụ</span>}
+            size="small"
+            dataSource={optionsService}
+            renderItem={item => <List.Item
+              onClick={() => {
+                router.push(`${item.link}`)
+              }}
+              style={{color: '#fff', cursor: 'pointer'}}>{item.label}</List.Item>}
+          />
+        </div>
+        <div className='col-sm-4'>
+          <List
+            header={<span style={{fontSize: '20px', color: '#fff', borderBottom: '2px solid'}}>Giới thiệu</span>}
+            size="small"
+            dataSource={optionsIntroduce}
+            renderItem={item => <List.Item
+              onClick={() => {
+                router.push(`${item.link}`)
+              }}
+              style={{color: '#fff', cursor: 'pointer'}}>{item.label}</List.Item>}
+          />
+        </div>
       </div>
     </Footer>
     {visible && <ModalCustom

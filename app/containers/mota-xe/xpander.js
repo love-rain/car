@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const Xpander = () => {
-  return <div className="xpander">
+  return <div className="row xpander">
     <h2>Mitsubishi Xpander – Quán quân trong phân khúc xe MPV</h2>
     <p className='fs-16'>Chính thức có mặt trên thị trường Việt vào tháng 8/2018. Xpander đã thổi làn gió mới khi mang
       đến cho khách hàng
