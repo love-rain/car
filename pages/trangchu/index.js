@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {Card, Carousel} from "antd";
+import {Carousel} from "antd";
 
 import "./trangchu.less"
 import useNews from "../../app/hook/useNews";
 import Spinner from "../../app/components/Spin";
+import TabNews from "../../app/components/TabNews";
+import TabSanpham from "../../app/components/TabSanpham";
 
-const {Meta} = Card;
 // const listProduct = [
 //   {
 //     name: 'Atrrage',
@@ -111,25 +112,14 @@ const HomePage = () => {
           <h3 className="title-block">
             <span>Thông tin nổi bật</span>
           </h3>
-          <div style={{width: '100%', overflow: "auto"}}>
-            <div style={{display: 'flex'}}>
-              {news.map((item, index) => {
-                return <Card
-                  key={index}
-                  hoverable
-                  bordered={false}
-                  style={{width: 240, marginRight: 10, marginBottom: 10}}
-                  cover={<img className='responsive-img' alt="example" src={item.photoURL}/>}
-                >
-                  <Meta
-                    title={<>
-                      <div className='custom-title'>{item.name}</div>
-                      <div className='custom-border'/>
-                    </>}
-                    description={item.subDescription}/>
-                </Card>
-              })}
-            </div>
+          <div style={{paddingBottom: 20}}>
+            <TabNews news={news}/>
+          </div>
+          <h3 className="title-block">
+            <span>Sản phẩm</span>
+          </h3>
+          <div>
+            <TabSanpham/>
           </div>
         </div>
       </div>

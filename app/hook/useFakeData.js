@@ -1,7 +1,7 @@
 import {useCallback} from 'react';
 import {firebaseFirestore} from "../../firebaseConfig";
 
-const useFakeData = () => {
+const useFakeData = (props) => {
   const fakeVersion = useCallback((id, version) => {
     firebaseFirestore.collection('sanpham')
       .doc(id)
